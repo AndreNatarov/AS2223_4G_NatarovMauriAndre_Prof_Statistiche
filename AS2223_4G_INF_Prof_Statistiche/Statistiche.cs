@@ -8,7 +8,11 @@ namespace AS2223_4G_INF_NatarovMauriAndre_Statistiche
 {
     public class Statistiche
     {
-
+        int SommaValoriSenzaPeso = 0;
+        double SommaValoriConPeso = 0;
+        double MoltiplicazioneValore = 0;
+        int MediaPonderata = 0;
+        int NumeroValori = 0;
 
         public Statistiche()
         {
@@ -21,13 +25,10 @@ namespace AS2223_4G_INF_NatarovMauriAndre_Statistiche
         /// <param name="valore"></param>
         public void AddValue(int valore)
         { 
-            int SommaValoriSenzaPeso = 0;
-            int NumeroElementi = 0;
-            do { 
-            int SommaValoriSenzaPeso += valore;
-            NumeroElementi++;
-            } while (valore != 0)
-            //float MediaAritmetica = 0;
+            
+            do {
+                SommaValoriSenzaPeso = SommaValoriSenzaPeso + valore;
+            } while (valore != 0);
         }
 
         /// <summary>
@@ -37,7 +38,12 @@ namespace AS2223_4G_INF_NatarovMauriAndre_Statistiche
         /// <param name="peso"></param>
         public void AddValue(int valore, double peso)
         {
-
+            
+            do {
+                MoltiplicazioneValore = valore * peso;
+                double temp = MoltiplicazioneValore;
+                SommaValoriConPeso = temp + MoltiplicazioneValore;
+            } while (valore != 0 && peso != 0);
         }
 
         /// <summary>
@@ -47,7 +53,7 @@ namespace AS2223_4G_INF_NatarovMauriAndre_Statistiche
         /// <returns></returns>
         public double MediaAritmetica()
         {
-
+            double MediaAritmetica = SommaValoriSenzaPeso/NumeroValori;
         }
 
         /// <summary>
@@ -57,7 +63,7 @@ namespace AS2223_4G_INF_NatarovMauriAndre_Statistiche
         /// <returns></returns>
         public double MediaPonderata()
         {
-
+            
         }
 
         /// <summary>
@@ -74,7 +80,10 @@ namespace AS2223_4G_INF_NatarovMauriAndre_Statistiche
         /// <returns></returns>
         public int CountValue()
         {
-
+            do
+            {
+                NumeroValori++;
+            } while (valore != 0);
         }
 
     }
